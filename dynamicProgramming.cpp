@@ -50,3 +50,17 @@ public:
         return weightedSum / weightSum;
     }
 };
+class UserInterface {
+public:
+    static int getWindowSize(int dataSize) {
+        int windowSize;
+        cout << "Enter window size for prediction: ";
+        cin >> windowSize;
+        
+        if (windowSize <= 0 || windowSize > dataSize) {
+            cerr << "Error: Invalid window size." << endl;
+            return -1;
+        }
+        return windowSize;
+    }
+};
