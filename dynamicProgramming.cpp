@@ -4,7 +4,7 @@
 
 using namespace std;
 
-// === Section 1: Data Handling (Assigned to Member 1) ===
+//  Data Handling
 class DataHandler {
 public:
     static vector<double> inputStockPrices() {
@@ -27,7 +27,7 @@ public:
         return stockPrices;
     }
 };
-// === Section 2: Prediction Algorithm (Assigned to Member 2) ===
+// Prediction Algorithm 
 class StockPredictor {
 public:
     static double predictStockPrice(const vector<double>& stockPrices, int windowSize) {
