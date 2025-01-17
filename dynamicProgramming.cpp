@@ -64,3 +64,23 @@ public:
         return windowSize;
     }
 };
+class Application {
+public:
+    static void run() {
+        vector<double> stockPrices = DataHandler::inputStockPrices();
+        if (stockPrices.empty()) {
+            cerr << "No stock price data available." << endl;
+            return;
+        }
+        
+        int windowSize = UserInterface::getWindowSize(stockPrices.size());
+        if (windowSize == -1) return;
+
+        double predictedPrice = StockPredictor::predictStockPrice(stockPrices, windowSize);
+        if (predictedPrice != -1) {
+            cout << "Predicted next stock price: $" << fixed << setprecision(2) << predictedPrice << endl;
+        } else {
+            cout << "Prediction failed due to insufficient data." << endl;
+        }
+    }
+};
