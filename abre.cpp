@@ -27,3 +27,26 @@ public:
         return stockPrices;
     }
 };
+// === Section 2: Prediction Algorithm (Assigned to Member 2) ===
+class StockPredictor {
+public:
+    static double predictStockPrice(const vector<double>& stockPrices, int windowSize) {
+        int n = stockPrices.size();
+        if (n < windowSize) {
+            cerr << "Error: Not enough data points to make a prediction." << endl;
+            return -1;
+        }
+
+        vector<double> dp(n, 0.0); // DP table to store computed moving averages
+        double weightSum = 0.0;
+        for (int i = 1; i <= windowSize; i++) {
+            weightSum += i; // Sum of weights for normalization
+        }
+
+        double weightedSum = 0.0;
+        for (int i = 0; i < windowSize; i++) {
+            weightedSum += stockPrices[n - windowSize + i] * (i + 1);
+        }
+        return weightedSum / weightSum;
+    }
+};
